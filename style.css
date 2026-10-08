@@ -1,0 +1,278 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0ec, #ffc2d8, #f8bbd0);
+    color: #7b1745;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid white;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(145, 35, 85, 0.15);
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 18px;
+    color: #c2185b;
+}
+
+.subtitle {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.instruction {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gift-area {
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gift {
+    position: relative;
+    width: 150px;
+    height: 140px;
+    cursor: pointer;
+    transition: transform 0.4s;
+    z-index: 2;
+    outline-offset: 8px;
+}
+
+.gift:hover {
+    transform: scale(1.08);
+}
+
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 100px;
+    background: #ec407a;
+    border-radius: 5px 5px 12px 12px;
+    box-shadow: 0 10px 20px rgba(180, 30, 90, 0.2);
+}
+
+.ribbon {
+    position: absolute;
+    left: 60px;
+    width: 30px;
+    height: 100%;
+    background: #ffe082;
+}
+
+.gift-lid {
+    position: absolute;
+    z-index: 2;
+    top: 28px;
+    left: -10px;
+    width: 170px;
+    height: 30px;
+    background: #d81b60;
+    border-radius: 7px;
+    transition: transform 0.8s ease;
+}
+
+.bow {
+    position: absolute;
+    z-index: 3;
+    top: -12px;
+    left: 51px;
+    font-size: 42px;
+    transition: transform 0.8s ease;
+}
+
+.gift.open .gift-lid {
+    transform: translate(-35px, -65px) rotate(-25deg);
+}
+
+.gift.open .bow {
+    transform: translate(-35px, -65px) rotate(-25deg);
+}
+
+.gift.open {
+    animation: disappear 0.9s forwards;
+    animation-delay: 0.5s;
+    pointer-events: none;
+}
+
+.heart-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.heart-container.show {
+    animation: heartAppear 1s forwards;
+}
+
+.heart {
+    font-size: 100px;
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 8px 12px rgba(220, 20, 80, 0.2));
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 28px;
+    animation: sparkle 1.5s infinite alternate;
+}
+
+.sparkle1 {
+    top: -40px;
+    right: -40px;
+}
+
+.sparkle2 {
+    top: 10px;
+    left: -55px;
+    animation-delay: 0.4s;
+}
+
+.sparkle3 {
+    bottom: -35px;
+    right: -35px;
+    animation-delay: 0.7s;
+}
+
+.message {
+    margin-top: 10px;
+    animation: fadeIn 1.2s ease;
+}
+
+.message h2 {
+    color: #c2185b;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.message p {
+    font-size: 17px;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+.love {
+    color: #ad1457;
+    font-weight: bold;
+}
+
+.signature {
+    color: #d81b60;
+}
+
+button {
+    margin-top: 12px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #d81b60;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ad1457;
+    transform: scale(1.05);
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #a32b60;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes heartAppear {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes disappear {
+    to {
+        opacity: 0;
+        transform: scale(0);
+        visibility: hidden;
+    }
+}
+
+@keyframes sparkle {
+    from {
+        transform: scale(0.7) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1.2) rotate(20deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    .container {
+        padding: 25px 15px;
+    }
+
+    .message p {
+        font-size: 15px;
+    }
+}
